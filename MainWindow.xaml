@@ -1,0 +1,159 @@
+﻿<Window x:Class="VideoManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewmodel="clr-namespace:VideoManager.ViewModels"
+        xmlns:converter="clr-namespace:VideoManager.Converters"
+        mc:Ignorable="d"
+        Title="Video Manager" Width="1280" Height="720"
+        WindowStartupLocation="CenterOwner" WindowState="Maximized">
+    <Window.DataContext>
+        <viewmodel:VideoViewModel/>
+    </Window.DataContext>
+    <Window.Resources>
+        <!-- Converters -->
+        <converter:DateTimeFormatConverter x:Key="FormatDate"/>
+        <converter:TimeSpanFormatConverter x:Key="FormatLength"/>
+        <converter:OrderOrientationToBitmapImageConverter x:Key="OrientationImage"/>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+
+        <!-- Menu panel -->
+        <Menu FontSize="14" Padding="2" Grid.Row="0">
+            <MenuItem Header="Videos">
+                <MenuItem Header="Load files" Command="{Binding LoadFilesCommand}"/>
+                <MenuItem Header="Load folder" Command="{Binding LoadDirectoryCommand}"/>
+                <MenuItem Header="Load folder &amp; sub-folders" Command="{Binding LoadDirectoriesCommand}"/>
+                <Separator/>
+                <MenuItem Header="Unload files" Command="{Binding UnloadFilesCommand}"/>
+            </MenuItem>
+        </Menu>
+
+
+
+        <!-- Header panel -->
+        <Border BorderBrush="LightGray" BorderThickness="0 0 0 1" Grid.Row="1">
+            <Grid Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Sidebar toggle image icon -->
+                <Image x:Name="sidebar_toggle" Cursor="Hand" RenderOptions.BitmapScalingMode="HighQuality" ToolTip="Open / Close the sidebar" Width="30" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="0"
+                       MouseLeave="ToggleButtonMouseLeave" MouseDown="ToggleButtonMouseDown" MouseUp="ToggleButtonMouseUp"/>
+
+                <!-- Search bar -->
+                <Border BorderBrush="DarkGray" BorderThickness="2" Grid.Column="1">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBox Text="{Binding TitleFilterText, UpdateSourceTrigger=PropertyChanged, Mode=OneWayToSource}" FontFamily="Leelawadee" FontSize="15" BorderThickness="0" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="2" Padding="2" Grid.Column="0"/>
+                        <Image x:Name="search_icon" RenderOptions.BitmapScalingMode="HighQuality" Width="25" Height="25" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="1" Margin="0 0 5 0"/>
+                    </Grid>
+                </Border>
+
+                <!-- Order selector -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="2">
+                    <TextBlock Text="ORDER BY:" FontSize="15" FontFamily="Cascadia Mono" FontWeight="SemiBold" VerticalAlignment="Center" Margin="10"/>
+                    <ComboBox ItemsSource="{Binding OrderPreferences}" SelectedItem="{Binding SelectedOrderPreference}" MinWidth="120" VerticalContentAlignment="Center">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <Label>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding Name}" FontSize="14" FontFamily="Cascadia Mono" VerticalAlignment="Center"/>
+                                        <Image Source="{Binding Orientation, Converter={StaticResource OrientationImage}}" RenderOptions.BitmapScalingMode="HighQuality" Width="20" Height="20" Margin="5 0 0 0"/>
+                                    </StackPanel>
+                                </Label>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </StackPanel>
+
+            </Grid>
+        </Border>
+
+
+
+        <!-- Main and side panel -->
+        <Grid Margin="0" Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition x:Name="side_panel" Width="15*"/>
+                <ColumnDefinition x:Name="main_panel" Width="100*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Side panel -->
+            <Border BorderBrush="LightGray" BorderThickness="0 0 1 0" Grid.Column="0">
+                <StackPanel Margin="10">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Video count display -->
+                        <TextBlock Text="NUMBER OF VIDEOS" FontSize="15" FontFamily="Cascadia Mono" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="5" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4"/>
+                        <TextBlock Text="Total:" FontSize="14" FontFamily="Cascadia Mono" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="2"/>
+                        <TextBlock Text="{Binding VideoCount, Mode=OneWay}" FontSize="14" FontFamily="Cascadia Mono" FontWeight="Bold" Foreground="Navy" HorizontalAlignment="Right" VerticalAlignment="Center" Padding="2" Grid.Row="1" Grid.Column="1"/>
+                        <TextBlock Text="Selected:" FontSize="14" FontFamily="Cascadia Mono" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="2"/>
+                        <TextBlock Text="{Binding SelectedVideoCount, Mode=OneWay}" FontSize="14" FontFamily="Cascadia Mono" FontWeight="Bold" Foreground="Navy" HorizontalAlignment="Right" VerticalAlignment="Center" Padding="2" Grid.Row="2" Grid.Column="1"/>
+                    </Grid>
+
+                    <Separator/>
+                    
+                </StackPanel>
+            </Border>
+
+            <!-- Main panel -->
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Grid.Column="1">
+                <ItemsControl x:Name="videos_panel" ItemsSource="{Binding SelectedVideos}" Margin="10 10 10 0">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Vertical" Margin="10" Width="355">
+                                <Label BorderBrush="LightGray" BorderThickness="1" MouseDoubleClick="OpenVideo" Tag="{Binding VideoPath}" Width="355" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" Padding="0" Grid.Row="0" Grid.Column="0">
+                                    <Grid>
+                                        <Image Source="{Binding Thumbnail}" RenderOptions.BitmapScalingMode="HighQuality"/>
+                                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Bottom" Background="Black" Foreground="White" Opacity="0.8" FontFamily="Leelawadee" FontWeight="Bold" FontSize="14" Padding="2 0 2 0" Margin="2" Text="{Binding Length, Converter={StaticResource FormatLength}}"/>
+                                    </Grid>
+                                </Label>
+                                <TextBlock Text="{Binding Title}" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap" ToolTip="{Binding Title}" FontFamily="Leelawadee" FontWeight="Bold" FontSize="16" Padding="5 5 5 2"/>
+                                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="DimGray" FontFamily="Leelawadee" FontWeight="Light" FontStyle="Italic" FontSize="14" Padding="5 0 5 0" Text="{Binding Date, Converter={StaticResource FormatDate}}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+            
+        </Grid>
+
+
+
+        <!-- Notification bar -->
+        <TextBlock Text="{Binding Notification.Message, Mode=OneWay}" Foreground="{Binding Notification.Color, Mode=OneWay}" Visibility="{Binding Notification.Visibility, Mode=OneWay}" Background="White" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" FontFamily="Leelawadee" FontSize="12" FontWeight="SemiBold" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="5" Padding="5 3 5 3" Grid.Row="0" Grid.RowSpan="3"/>
+
+        
+        
+    </Grid>
+</Window>

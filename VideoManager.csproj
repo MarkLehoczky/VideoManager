@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net6.0-windows</TargetFramework>
+		<SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
+		<UseWindowsForms>True</UseWindowsForms>
+		<UseWPF>True</UseWPF>
+		<ApplicationIcon>Resources\app_icon.ico</ApplicationIcon>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Remove="Resources\app_icon.ico" />
+	  <None Remove="Resources\order_asc_icon.png" />
+	  <None Remove="Resources\order_desc_icon.png" />
+	  <None Remove="Resources\search_icon.png" />
+	  <None Remove="Resources\sidebar_icon.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="Resources\app_icon.ico" />
+	  <EmbeddedResource Include="Resources\order_asc_icon.png" />
+	  <EmbeddedResource Include="Resources\order_desc_icon.png" />
+	  <EmbeddedResource Include="Resources\search_icon.png" />
+	  <EmbeddedResource Include="Resources\sidebar_icon.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.0" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+		<PackageReference Include="NReco.VideoConverter" Version="1.2.0" />
+		<PackageReference Include="NReco.VideoInfo" Version="1.2.0" />
+	</ItemGroup>
+
+</Project>
