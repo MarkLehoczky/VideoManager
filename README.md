@@ -18,10 +18,10 @@ This is a simple **video manager program** built in *Visual Studio* using C# 6.0
 
 ```shell
 # 1. Clone the Github repository
-git clone https://github.com/MarkLehoczky/Video-Manager.git
+git clone https://github.com/MarkLehoczky/VideoManager.git
 
 # 2. Build and run the project
-dotnet run --project .\Video-Manager\VideoManager.csproj --configuration Release
+dotnet run --project .\VideoManager\VideoManager.csproj --configuration Release
 ```
 
 ### Visual Studio
@@ -32,9 +32,9 @@ dotnet run --project .\Video-Manager\VideoManager.csproj --configuration Release
 
 ### Binary file
 
-1. Click the `Video manager` under the `Releases` section on the right side of the main [github page](https://github.com/MarkLehoczky/VideoManager).
+1. Go to the [*Releases*](https://github.com/MarkLehoczky/VideoManager/releases) section.
 2. Click the `VideoManager.exe` file to download.
-3. Click the downloaded file to launch the program.
+3. Run the downloaded file.
 
 ## Prerequisites
 
