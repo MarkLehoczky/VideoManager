@@ -4,6 +4,8 @@ using CommunityToolkit.Mvvm.Input;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using VideoManager.Logics;
@@ -18,6 +20,7 @@ namespace VideoManager.ViewModels
         private Notification notification;
         private OrderPreference selectedOrderPreference;
         private string titleFilterText;
+        private IList<Task> tasks;
 
         public Notification Notification { get => notification; }
         public List<Video> Videos { get; set; }
@@ -60,6 +63,7 @@ namespace VideoManager.ViewModels
             this.logic = logic;
             Videos = new List<Video>();
             SelectedVideos = new ObservableCollection<Video>();
+            tasks = new List<Task>();
 
             IComparer<Video> titleComparer = Comparer<Video>.Create((left, right) => left.Title.CompareTo(right.Title));
             IComparer<Video> dateComparer = Comparer<Video>.Create((left, right) => left.Date.CompareTo(right.Date));
@@ -81,23 +85,23 @@ namespace VideoManager.ViewModels
 
 
             LoadFilesCommand = new RelayCommand(
-                () => { logic.LoadFiles(); (UnloadFilesCommand as RelayCommand)?.NotifyCanExecuteChanged(); },
+                () => { tasks.Add(logic.LoadFiles()); (UnloadFilesCommand as RelayCommand)?.NotifyCanExecuteChanged(); },
                 () => true
                 );
 
             LoadDirectoryCommand = new RelayCommand(
-                () => { logic.LoadDirectory(); (UnloadFilesCommand as RelayCommand)?.NotifyCanExecuteChanged(); },
+                () => { tasks.Add(logic.LoadDirectory()); (UnloadFilesCommand as RelayCommand)?.NotifyCanExecuteChanged(); },
                 () => true
                 );
 
             LoadDirectoriesCommand = new RelayCommand(
-                () => { logic.LoadDirectories(); (UnloadFilesCommand as RelayCommand)?.NotifyCanExecuteChanged(); },
+                () => { tasks.Add(logic.LoadDirectories()); (UnloadFilesCommand as RelayCommand)?.NotifyCanExecuteChanged(); },
                 () => true
                 );
 
             UnloadFilesCommand = new RelayCommand(
                 () => { logic.UnloadFiles(); logic.UpdateVideos(); (UnloadFilesCommand as RelayCommand)?.NotifyCanExecuteChanged(); },
-                () => Videos.Count > 0
+                () => Videos.Count > 0 && tasks.All(t => t.IsCompleted)
                 );
 
             Messenger.Register<VideoViewModel, string, string>(this, "VideoInfo", (_, _) =>
