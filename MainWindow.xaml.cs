@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
@@ -21,7 +22,7 @@ namespace VideoManager
             search_icon.Source = Extensions.EmbeddedImage(@"Resources\search_icon.png");
         }
 
-       
+
         private void ToggleButtonMouseLeave(object sender, MouseEventArgs e)
         {
             mouseButtonPushed = false;
@@ -46,7 +47,8 @@ namespace VideoManager
         {
             var info = new ProcessStartInfo((sender as FrameworkElement)?.Tag.ToString() ?? "");
             info.UseShellExecute = true;
-            Process.Start(info);
+            try { Process.Start(info); }
+            catch (Win32Exception excpetion) { MessageBox.Show(excpetion.Message, "Windows error", MessageBoxButton.OKCancel, MessageBoxImage.Error); }
         }
     }
 
