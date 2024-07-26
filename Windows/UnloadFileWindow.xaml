@@ -12,7 +12,7 @@
         <converter:DateTimeFormatConverter x:Key="DateFormat"/>
         <converter:TimeSpanFormatConverter x:Key="LengthFormat"/>
     </Window.Resources>
-    <Grid>
+    <Grid Style="{StaticResource BackgroundStyle}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="1*"/>

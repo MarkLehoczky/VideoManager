@@ -57,6 +57,7 @@ namespace VideoManager.ViewModels
         public ICommand ThumbnailSettingsCommand { get; set; }
         public ICommand TitleSettingsCommand { get; set; }
         public ICommand DateSettingsCommand { get; set; }
+        public ICommand BackgroundSettingsCommand { get; set; }
 
 
 
@@ -121,6 +122,11 @@ namespace VideoManager.ViewModels
 
             DateSettingsCommand = new RelayCommand(
                 () => settingsLogic.ChangeDate(),
+                () => true
+                );
+
+            BackgroundSettingsCommand = new RelayCommand(
+                () => settingsLogic.ChangeBackground(),
                 () => true
                 );
 

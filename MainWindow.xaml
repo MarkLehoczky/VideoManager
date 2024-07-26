@@ -18,7 +18,7 @@
         <converter:OrderOrientationToBitmapImageConverter x:Key="OrientationImage"/>
     </Window.Resources>
 
-    <Grid>
+    <Grid Style="{StaticResource BackgroundStyle}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -39,6 +39,8 @@
                 <MenuItem Header="Thumbnail settings" Command="{Binding ThumbnailSettingsCommand}"/>
                 <MenuItem Header="Title settings" Command="{Binding TitleSettingsCommand}"/>
                 <MenuItem Header="Date settings" Command="{Binding DateSettingsCommand}"/>
+                <Separator/>
+                <MenuItem Header="Background settings" Command="{Binding BackgroundSettingsCommand}"/>
             </MenuItem>
         </Menu>
 

@@ -49,5 +49,11 @@
             <Setter Property="Width" Value="{DynamicResource ThumbnailWidth}"/>
         </Style>
 
+
+        <Brush x:Key="BackgroundColor">White</Brush>
+        <Style TargetType="Grid" x:Key="BackgroundStyle">
+            <Setter Property="Background" Value="{DynamicResource BackgroundColor}"/>
+        </Style>
+
     </Application.Resources>
 </Application>

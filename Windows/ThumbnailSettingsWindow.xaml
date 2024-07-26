@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:VideoManager.Windows"
         mc:Ignorable="d"
         Title="Thumbnail Settings" Height="150" Width="200">
-    <Grid Margin="5">
+    <Grid Style="{StaticResource BackgroundStyle}" Margin="5">
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition Height="auto"/>

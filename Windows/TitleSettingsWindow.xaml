@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Title Settings" Height="275" Width="300">
 
-    <Grid Margin="5">
+    <Grid Style="{StaticResource BackgroundStyle}" Margin="5">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="18*"/>
             <ColumnDefinition Width="11*"/>

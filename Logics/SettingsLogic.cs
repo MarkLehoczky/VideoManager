@@ -9,13 +9,15 @@ namespace VideoManager.Logics
         private IThumbnailSettingsChangeService thumbnailSettingsChangeService;
         private ITitleSettingsChangeService titleSettingsChangeService;
         private IDateSettingsChangeService dateSettingsChangeService;
+        private IBackgroundSettingsChangeService backgroundSettingsChangeService;
 
-        public SettingsLogic(IMessenger messenger, IThumbnailSettingsChangeService thumbnailSettingsChangeService, ITitleSettingsChangeService titleSettingsChangeService, IDateSettingsChangeService dateSettingsChangeService)
+        public SettingsLogic(IMessenger messenger, IThumbnailSettingsChangeService thumbnailSettingsChangeService, ITitleSettingsChangeService titleSettingsChangeService, IDateSettingsChangeService dateSettingsChangeService, IBackgroundSettingsChangeService backgroundSettingsChangeService)
         {
             this.messenger = messenger;
             this.thumbnailSettingsChangeService = thumbnailSettingsChangeService;
             this.titleSettingsChangeService = titleSettingsChangeService;
             this.dateSettingsChangeService = dateSettingsChangeService;
+            this.backgroundSettingsChangeService = backgroundSettingsChangeService;
         }
 
 
@@ -35,6 +37,12 @@ namespace VideoManager.Logics
         {
             dateSettingsChangeService.ChangeSettings();
             messenger.Send("settings", "DatelChange");
+        }
+
+        public void ChangeBackground()
+        {
+            backgroundSettingsChangeService.ChangeSettings();
+            messenger.Send("settings", "BackgroundChange");
         }
     }
 }

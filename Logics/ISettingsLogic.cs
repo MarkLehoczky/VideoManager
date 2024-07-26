@@ -5,5 +5,6 @@
         void ChangeThumbnail();
         void ChangeTitle();
         void ChangeDate();
+        void ChangeBackground();
     }
 }

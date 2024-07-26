@@ -14,4 +14,9 @@
     {
         void ChangeSettings();
     }
+
+    public interface IBackgroundSettingsChangeService
+    {
+        void ChangeSettings();
+    }
 }

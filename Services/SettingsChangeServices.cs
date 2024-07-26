@@ -25,4 +25,12 @@ namespace VideoManager.Services
             new TitleSettingsWindow().ShowDialog();
         }
     }
+
+    public class BackgroundSettingsChangeService : IBackgroundSettingsChangeService
+    {
+        public void ChangeSettings()
+        {
+            new BackgroundSettingsWindow().ShowDialog();
+        }
+    }
 }

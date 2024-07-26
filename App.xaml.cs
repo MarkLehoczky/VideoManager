@@ -19,6 +19,7 @@ namespace VideoManager
                     .AddSingleton<IThumbnailSettingsChangeService, ThumbnailSettingsChangeService>()
                     .AddSingleton<ITitleSettingsChangeService, TitleSettingsChangeService>()
                     .AddSingleton<IDateSettingsChangeService, DateSettingsChangeService>()
+                    .AddSingleton<IBackgroundSettingsChangeService, BackgroundSettingsChangeService>()
                     .AddSingleton<IMessenger>(WeakReferenceMessenger.Default)
                     .BuildServiceProvider());
         }
