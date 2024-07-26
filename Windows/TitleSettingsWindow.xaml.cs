@@ -27,7 +27,7 @@ namespace VideoManager.Windows
 
         private void Confirm(object sender, RoutedEventArgs e)
         {
-            if (double.TryParse(font_size.Text, out double size) && size >= 0)
+            if (double.TryParse(font_size.Text, out double size) && size > 0)
                 Application.Current.Resources["TitleFontSize"] = size;
 
             Application.Current.Resources["TitleFontFamily"] = font_family.SelectedItem;
