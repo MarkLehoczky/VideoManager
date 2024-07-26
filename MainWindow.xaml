@@ -136,7 +136,7 @@
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Vertical" Margin="10" Width="355">
+                            <StackPanel Orientation="Vertical" Margin="10">
                                 <Label BorderBrush="LightGray" BorderThickness="1" MouseDoubleClick="OpenVideo" Tag="{Binding VideoPath}" Style="{StaticResource ThumbnailStyle}" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" Padding="0" Grid.Row="0" Grid.Column="0">
                                     <Grid>
                                         <Image Source="{Binding Thumbnail}" RenderOptions.BitmapScalingMode="HighQuality"/>

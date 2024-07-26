@@ -28,6 +28,8 @@
             <Setter Property="Foreground" Value="{DynamicResource TitleForeground}"/>
             <Setter Property="TextWrapping" Value="{DynamicResource TitleTextWrapping}"/>
             <Setter Property="TextTrimming" Value="{DynamicResource TitleTextTrimming}"/>
+            
+            <Setter Property="Width" Value="{DynamicResource ThumbnailWidth}"/>
         </Style>
         
         
@@ -43,6 +45,8 @@
             <Setter Property="FontWeight" Value="{DynamicResource DateFontWeight}"/>
             <Setter Property="Foreground" Value="{DynamicResource DateForeground}"/>
             <Setter Property="HorizontalAlignment" Value="{DynamicResource DateAlignment}"/>
+            
+            <Setter Property="Width" Value="{DynamicResource ThumbnailWidth}"/>
         </Style>
 
     </Application.Resources>
