@@ -24,11 +24,11 @@
             </Grid.ColumnDefinitions>
 
             <TextBlock Text="HEIGHT:" Padding="0 0 3 0" FontFamily="Cascadia Mono" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0"/>
-            <TextBox x:Name="thumbnail_height" Padding="5 2 5 2" FontFamily="Leelawadee" FontSize="12" FontWeight="Light" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="0" Grid.Column="1"/>
+            <TextBox x:Name="thumbnail_height" Padding="5 2 5 2" FontFamily="Leelawadee" FontSize="12" FontWeight="Light" Width="50" HorizontalAlignment="Right" HorizontalContentAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Grid.Column="1"/>
             <TextBlock Text="px" Padding="3 0 0 0" FontFamily="Cascadia Mono" FontSize="14" FontWeight="Light" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="0" Grid.Column="2"/>
 
             <TextBlock Text="WIDTH:" Padding="0 0 3 0" FontFamily="Cascadia Mono" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0"/>
-            <TextBox x:Name="thumbnail_width" Padding="5 2 5 2" FontFamily="Leelawadee" FontSize="12" FontWeight="Light" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1"/>
+            <TextBox x:Name="thumbnail_width" Padding="5 2 5 2" FontFamily="Leelawadee" FontSize="12" FontWeight="Light" Width="50" HorizontalAlignment="Right" HorizontalContentAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1"/>
             <TextBlock Text="px" Padding="3 0 0 0" FontFamily="Cascadia Mono" FontSize="14" FontWeight="Light" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="1" Grid.Column="2"/>
         </Grid>
 

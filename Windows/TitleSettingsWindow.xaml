@@ -32,22 +32,22 @@
             </Grid.ColumnDefinitions>
             
             <TextBlock Text="Font Size:" FontFamily="Cascadia Mono" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0"/>
-            <TextBox x:Name="font_size" Padding="5 2 5 2" FontFamily="Leelawadee" FontSize="12" FontWeight="Light" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBox x:Name="font_size" Padding="5 2 5 2" FontFamily="Leelawadee" FontSize="12" FontWeight="Light" Width="50" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center"/>
 
             <TextBlock Text="Font Family:" FontFamily="Cascadia Mono" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0"/>
-            <ComboBox x:Name="font_family" Padding="5 2 5 2" FontFamily="Leelawadee" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1"/>
+            <ComboBox x:Name="font_family" Padding="5 2 5 2" FontFamily="Leelawadee" FontSize="12" Margin="10 0 10 0" HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1"/>
 
             <TextBlock Text="Font Weight:" FontFamily="Cascadia Mono" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="2" Grid.Column="0"/>
-            <ComboBox x:Name="font_weight" Padding="5 2 5 2" FontFamily="Leelawadee" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Grid.Column="1"/>
+            <ComboBox x:Name="font_weight" Padding="5 2 5 2" FontFamily="Leelawadee" FontSize="12" Margin="10 0 10 0" HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Row="2" Grid.Column="1"/>
 
             <TextBlock Text="Font Color:" FontFamily="Cascadia Mono" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="3" Grid.Column="0"/>
-            <ComboBox x:Name="font_color" Padding="5 2 5 2" FontFamily="Leelawadee" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="3" Grid.Column="1"/>
+            <ComboBox x:Name="font_color" Padding="5 2 5 2" FontFamily="Leelawadee" FontSize="12" Margin="10 0 10 0" HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Row="3" Grid.Column="1"/>
 
             <TextBlock Text="Wrap Title:" FontFamily="Cascadia Mono" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="4" Grid.Column="0"/>
-            <ComboBox x:Name="font_wrap" Padding="5 2 5 2" FontFamily="Leelawadee" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="4" Grid.Column="1"/>
+            <ComboBox x:Name="font_wrap" Padding="5 2 5 2" FontFamily="Leelawadee" FontSize="12" Margin="10 0 10 0" HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Row="4" Grid.Column="1"/>
 
             <TextBlock Text="Trimming Style:" FontFamily="Cascadia Mono" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="5" Grid.Column="0"/>
-            <ComboBox x:Name="font_trim" Padding="5 2 5 2" FontFamily="Leelawadee" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="5" Grid.Column="1"/>
+            <ComboBox x:Name="font_trim" Padding="5 2 5 2" FontFamily="Leelawadee" FontSize="12" Margin="10 0 10 0" HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Row="5" Grid.Column="1"/>
         </Grid>
 
         <Border BorderBrush="DimGray" BorderThickness="0 0.5 0 0" Padding="0 5 0 0" Margin="0 5 0 0" Grid.Row="1" Grid.ColumnSpan="2">
