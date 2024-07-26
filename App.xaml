@@ -1,9 +1,49 @@
 ﻿<Application x:Class="VideoManager.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:VideoManager"
+             xmlns:local="clr-namespace:VideoManager" xmlns:system="clr-namespace:System;assembly=netstandard"
              StartupUri="MainWindow.xaml">
-    <Application.Resources>
-         
+    <Application.Resources>       
+        
+        <system:Double x:Key="ThumbnailHeight">200</system:Double>
+        <system:Double x:Key="ThumbnailWidth">355</system:Double>
+        
+        <Style TargetType="Label" x:Key="ThumbnailStyle">
+            <Setter Property="Height" Value="{DynamicResource ThumbnailHeight}"/>
+            <Setter Property="Width" Value="{DynamicResource ThumbnailWidth}"/>
+        </Style>
+        
+        
+        <system:Double x:Key="TitleFontSize">16</system:Double>
+        <FontFamily x:Key="TitleFontFamily">Leelawadee</FontFamily>
+        <FontWeight x:Key="TitleFontWeight">Bold</FontWeight>
+        <Brush x:Key="TitleForeground">Black</Brush>
+        <TextWrapping x:Key="TitleTextWrapping">NoWrap</TextWrapping>
+        <TextTrimming x:Key="TitleTextTrimming">CharacterEllipsis</TextTrimming>
+        
+        <Style TargetType="TextBlock" x:Key="TitleStyle">
+            <Setter Property="FontSize" Value="{DynamicResource TitleFontSize}"/>
+            <Setter Property="FontFamily" Value="{DynamicResource TitleFontFamily}"/>
+            <Setter Property="FontWeight" Value="{DynamicResource TitleFontWeight}"/>
+            <Setter Property="Foreground" Value="{DynamicResource TitleForeground}"/>
+            <Setter Property="TextWrapping" Value="{DynamicResource TitleTextWrapping}"/>
+            <Setter Property="TextTrimming" Value="{DynamicResource TitleTextTrimming}"/>
+        </Style>
+        
+        
+        <system:Double x:Key="DateFontSize">14</system:Double>
+        <FontFamily x:Key="DateFontFamily">Leelawadee</FontFamily>
+        <FontWeight x:Key="DateFontWeight">Light</FontWeight>
+        <Brush x:Key="DateForeground">DimGray</Brush>
+        <HorizontalAlignment x:Key="DateAlignment">Left</HorizontalAlignment>
+        
+        <Style TargetType="TextBlock" x:Key="DateStyle">
+            <Setter Property="FontSize" Value="{DynamicResource DateFontSize}"/>
+            <Setter Property="FontFamily" Value="{DynamicResource DateFontFamily}"/>
+            <Setter Property="FontWeight" Value="{DynamicResource DateFontWeight}"/>
+            <Setter Property="Foreground" Value="{DynamicResource DateForeground}"/>
+            <Setter Property="HorizontalAlignment" Value="{DynamicResource DateAlignment}"/>
+        </Style>
+
     </Application.Resources>
 </Application>

@@ -2,7 +2,7 @@
 using System.Windows;
 using VideoManager.Models;
 
-namespace VideoManager
+namespace VideoManager.Windows
 {
     public partial class UnloadFileWindow : Window
     {

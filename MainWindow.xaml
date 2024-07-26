@@ -35,6 +35,11 @@
                 <Separator/>
                 <MenuItem Header="Unload files" Command="{Binding UnloadFilesCommand}"/>
             </MenuItem>
+            <MenuItem Header="Settings">
+                <MenuItem Header="Thumbnail settings" Command="{Binding ThumbnailSettingsCommand}"/>
+                <MenuItem Header="Title settings" Command="{Binding TitleSettingsCommand}"/>
+                <MenuItem Header="Date settings" Command="{Binding DateSettingsCommand}"/>
+            </MenuItem>
         </Menu>
 
 
@@ -132,14 +137,14 @@
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Vertical" Margin="10" Width="355">
-                                <Label BorderBrush="LightGray" BorderThickness="1" MouseDoubleClick="OpenVideo" Tag="{Binding VideoPath}" Width="355" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" Padding="0" Grid.Row="0" Grid.Column="0">
+                                <Label BorderBrush="LightGray" BorderThickness="1" MouseDoubleClick="OpenVideo" Tag="{Binding VideoPath}" Style="{StaticResource ThumbnailStyle}" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" Padding="0" Grid.Row="0" Grid.Column="0">
                                     <Grid>
                                         <Image Source="{Binding Thumbnail}" RenderOptions.BitmapScalingMode="HighQuality"/>
                                         <TextBlock HorizontalAlignment="Right" VerticalAlignment="Bottom" Background="Black" Foreground="White" Opacity="0.8" FontFamily="Leelawadee" FontWeight="Bold" FontSize="14" Padding="2 0 2 0" Margin="2" Text="{Binding Length, Converter={StaticResource FormatLength}}"/>
                                     </Grid>
                                 </Label>
-                                <TextBlock Text="{Binding Title}" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap" ToolTip="{Binding Title}" FontFamily="Leelawadee" FontWeight="Bold" FontSize="16" Padding="5 5 5 2"/>
-                                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="DimGray" FontFamily="Leelawadee" FontWeight="Light" FontStyle="Italic" FontSize="14" Padding="5 0 5 0" Text="{Binding Date, Converter={StaticResource FormatDate}}"/>
+                                <TextBlock Text="{Binding Title}" ToolTip="{Binding Title}" Style="{StaticResource TitleStyle}" Padding="5 5 5 2"/>
+                                <TextBlock Text="{Binding Date, Converter={StaticResource FormatDate}}" Style="{StaticResource DateStyle}" Padding="5 0 5 0" VerticalAlignment="Center"/>
                             </StackPanel>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>

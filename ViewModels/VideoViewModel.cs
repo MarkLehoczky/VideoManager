@@ -16,7 +16,7 @@ namespace VideoManager.ViewModels
 {
     public class VideoViewModel : ObservableRecipient
     {
-        private IVideoLogic logic;
+        private IVideoLogic videoLogic;
         private Notification notification;
         private OrderPreference selectedOrderPreference;
         private string titleFilterText;
@@ -33,7 +33,7 @@ namespace VideoManager.ViewModels
             set
             {
                 SetProperty(ref selectedOrderPreference, value);
-                logic.OrderPreferenceChanged(selectedOrderPreference);
+                videoLogic.OrderPreferenceChanged(selectedOrderPreference);
             }
         }
         public string TitleFilterText
@@ -42,25 +42,29 @@ namespace VideoManager.ViewModels
             set
             {
                 SetProperty(ref titleFilterText, value);
-                logic.TitleFilterChanged(new TitleFilter(titleFilterText));
+                videoLogic.TitleFilterChanged(new TitleFilter(titleFilterText));
             }
         }
 
-        public int VideoCount { get => logic.VideoCount; }
-        public int SelectedVideoCount { get => logic.SelectedVideoCount; }
+        public int VideoCount { get => videoLogic.VideoCount; }
+        public int SelectedVideoCount { get => videoLogic.SelectedVideoCount; }
 
         public ICommand LoadFilesCommand { get; set; }
         public ICommand LoadDirectoryCommand { get; set; }
         public ICommand LoadDirectoriesCommand { get; set; }
         public ICommand UnloadFilesCommand { get; set; }
 
+        public ICommand ThumbnailSettingsCommand { get; set; }
+        public ICommand TitleSettingsCommand { get; set; }
+        public ICommand DateSettingsCommand { get; set; }
 
 
-        public VideoViewModel() : this(IsInDesignMode ? null : Ioc.Default.GetService<IVideoLogic>()) { }
 
-        public VideoViewModel(IVideoLogic logic)
+        public VideoViewModel() : this(IsInDesignMode ? null : Ioc.Default.GetService<IVideoLogic>(), Ioc.Default.GetService<ISettingsLogic>()) { }
+
+        public VideoViewModel(IVideoLogic videoLogic, ISettingsLogic settingsLogic)
         {
-            this.logic = logic;
+            this.videoLogic = videoLogic;
             Videos = new List<Video>();
             SelectedVideos = new ObservableCollection<Video>();
             tasks = new List<Task>();
@@ -81,28 +85,45 @@ namespace VideoManager.ViewModels
             selectedOrderPreference = OrderPreferences[0];
             notification = Notification.Singleton;
 
-            logic.Setup(Videos, SelectedVideos, ref notification);
+            videoLogic.Setup(Videos, SelectedVideos, ref notification);
 
 
             LoadFilesCommand = new RelayCommand(
-                () => { tasks.Add(logic.LoadFiles()); (UnloadFilesCommand as RelayCommand)?.NotifyCanExecuteChanged(); },
+                () => { tasks.Add(videoLogic.LoadFiles()); (UnloadFilesCommand as RelayCommand)?.NotifyCanExecuteChanged(); },
                 () => true
                 );
 
             LoadDirectoryCommand = new RelayCommand(
-                () => { tasks.Add(logic.LoadDirectory()); (UnloadFilesCommand as RelayCommand)?.NotifyCanExecuteChanged(); },
+                () => { tasks.Add(videoLogic.LoadDirectory()); (UnloadFilesCommand as RelayCommand)?.NotifyCanExecuteChanged(); },
                 () => true
                 );
 
             LoadDirectoriesCommand = new RelayCommand(
-                () => { tasks.Add(logic.LoadDirectories()); (UnloadFilesCommand as RelayCommand)?.NotifyCanExecuteChanged(); },
+                () => { tasks.Add(videoLogic.LoadDirectories()); (UnloadFilesCommand as RelayCommand)?.NotifyCanExecuteChanged(); },
                 () => true
                 );
 
             UnloadFilesCommand = new RelayCommand(
-                () => { logic.UnloadFiles(); logic.UpdateVideos(); (UnloadFilesCommand as RelayCommand)?.NotifyCanExecuteChanged(); },
+                () => { videoLogic.UnloadFiles(); videoLogic.UpdateVideos(); (UnloadFilesCommand as RelayCommand)?.NotifyCanExecuteChanged(); },
                 () => Videos.Count > 0 && tasks.All(t => t.IsCompleted)
                 );
+
+
+            ThumbnailSettingsCommand = new RelayCommand(
+                () => settingsLogic.ChangeThumbnail(),
+                () => true
+                );
+
+            TitleSettingsCommand = new RelayCommand(
+                () => settingsLogic.ChangeTitle(),
+                () => true
+                );
+
+            DateSettingsCommand = new RelayCommand(
+                () => settingsLogic.ChangeDate(),
+                () => true
+                );
+
 
             Messenger.Register<VideoViewModel, string, string>(this, "VideoInfo", (_, _) =>
                 {

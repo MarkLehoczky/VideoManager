@@ -1,0 +1,65 @@
+﻿<Window x:Class="VideoManager.Windows.TitleSettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VideoManager.Windows"
+        mc:Ignorable="d"
+        Title="Title Settings" Height="275" Width="300">
+
+    <Grid Margin="5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="18*"/>
+            <ColumnDefinition Width="11*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Grid.ColumnSpan="2" Margin="0,0,0,32" Grid.RowSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
+            <TextBlock Text="Font Size:" FontFamily="Cascadia Mono" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0"/>
+            <TextBox x:Name="font_size" Padding="5 2 5 2" FontFamily="Leelawadee" FontSize="12" FontWeight="Light" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+            <TextBlock Text="Font Family:" FontFamily="Cascadia Mono" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0"/>
+            <ComboBox x:Name="font_family" Padding="5 2 5 2" FontFamily="Leelawadee" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1"/>
+
+            <TextBlock Text="Font Weight:" FontFamily="Cascadia Mono" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="2" Grid.Column="0"/>
+            <ComboBox x:Name="font_weight" Padding="5 2 5 2" FontFamily="Leelawadee" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Grid.Column="1"/>
+
+            <TextBlock Text="Font Color:" FontFamily="Cascadia Mono" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="3" Grid.Column="0"/>
+            <ComboBox x:Name="font_color" Padding="5 2 5 2" FontFamily="Leelawadee" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="3" Grid.Column="1"/>
+
+            <TextBlock Text="Wrap Title:" FontFamily="Cascadia Mono" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="4" Grid.Column="0"/>
+            <ComboBox x:Name="font_wrap" Padding="5 2 5 2" FontFamily="Leelawadee" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="4" Grid.Column="1"/>
+
+            <TextBlock Text="Trimming Style:" FontFamily="Cascadia Mono" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="5" Grid.Column="0"/>
+            <ComboBox x:Name="font_trim" Padding="5 2 5 2" FontFamily="Leelawadee" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="5" Grid.Column="1"/>
+        </Grid>
+
+        <Border BorderBrush="DimGray" BorderThickness="0 0.5 0 0" Padding="0 5 0 0" Margin="0 5 0 0" Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Button Content="Confirm" Click="Confirm" Background="Gainsboro" BorderBrush="Black" BorderThickness="1" Cursor="Hand" ClickMode="Press" IsDefault="True" Padding="5 2 5 2" Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="0"/>
+                <Button Content="Cancel" Click="Cancel" Background="Gainsboro" BorderBrush="Black" BorderThickness="1" Cursor="Hand" ClickMode="Press" IsCancel="True" Padding="5 2 5 2" Margin="5 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1"/>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

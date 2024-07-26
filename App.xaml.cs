@@ -14,7 +14,11 @@ namespace VideoManager
             Ioc.Default.ConfigureServices(
                 new ServiceCollection()
                     .AddSingleton<IVideoLogic, VideoLogic>()
+                    .AddSingleton<ISettingsLogic, SettingsLogic>()
                     .AddSingleton<IVideoUnloadService, VideoUnloadService>()
+                    .AddSingleton<IThumbnailSettingsChangeService, ThumbnailSettingsChangeService>()
+                    .AddSingleton<ITitleSettingsChangeService, TitleSettingsChangeService>()
+                    .AddSingleton<IDateSettingsChangeService, DateSettingsChangeService>()
                     .AddSingleton<IMessenger>(WeakReferenceMessenger.Default)
                     .BuildServiceProvider());
         }
